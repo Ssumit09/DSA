@@ -1,0 +1,18 @@
+class Solution {
+    public int coinChange(int[] coins, int amount) {
+        // Create a dp array of size amount+1 and fill it with a large number (max)
+        int max = amount + 1;
+        int[] dp = new int[amount + 1];
+        Arrays.fill(dp, max); 
+        dp[0] = 0; 
+
+        for (int i = 0; i < coins.length; i++) {
+            int coin = coins[i];
+            for (int j = coin; j <= amount; j++) {
+                // Check if using this coin gives a smaller count
+                dp[j] = Math.min(dp[j], dp[j - coin] + 1);
+            }
+        }
+        return dp[amount] > amount ? -1 : dp[amount];
+    }
+}
