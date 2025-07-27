@@ -1,0 +1,16 @@
+//Imput no is given
+class Solution {
+public:
+    bool isPalindrome(int x) {
+       int temp=x;
+       long sum=0;
+        while(temp>0){
+            sum=sum*10+(temp%10);
+            temp=temp/10;
+        }
+        if (sum==x)
+            return true;
+        else
+            return false;
+    }
+};
