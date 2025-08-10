@@ -1,0 +1,22 @@
+class Solution {
+    public int maxArea(int[] height) {
+        int n=height.length;
+        int left=0;
+        int right=n-1;
+        int area=0;
+        // first we need to find the minimum height from both sides and then find the area 
+        while(left<right){
+            if(height[left]<height[right]){
+                int currarea=height[left]*(right-left);
+                area=Math.max(area,currarea);
+                left++;
+            }
+            else{
+                int currarea=height[right]*(right-left);
+                area=Math.max(area,currarea);
+                right--;}
+        }
+
+        return area;
+    }
+    }
